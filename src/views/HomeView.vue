@@ -3,7 +3,7 @@
 
 <template>
   <main>
-    <h3>IDEN Calculator</h3>
+    <h3 class="main-header">IDEN Calculator</h3>
     <p>
       Downlink Frequency (MHz): <input v-model="downlink" v-on:input="updateId"/><br/>
       Base Frequency (MHz): <input v-model="base" v-on:input="updateId"/><br/>
@@ -12,14 +12,14 @@
       Channel ID (dec): <input v-model="id" v-on:input="updateDownlink"/> (0x{{ id.toString(16) }})<br/>
       Uplink Frequency (MHz): {{ uplink }}MHz
     </p>
-    <p class="footer-text">Copyright &copy; 2023 Natalie Moore and the <a href="https://github.com/dvmproject">DVMProject</a> team.</p>
+    <p class="footer-text">iden-calc-web V0.1 copyright &copy; 2023 Natalie Moore and the <a href="https://github.com/dvmproject">DVMProject</a> team.</p>
   </main>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 export default defineComponent({
-    name: 'CheckMR',
+    name: 'HomeView',
     data() {
         return {
             id: 0 as number,
