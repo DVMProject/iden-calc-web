@@ -3,15 +3,14 @@
 
 <template>
   <main>
-    <h3 class="main-header">IDEN Calculator</h3>
-    <p>
-      Downlink Frequency (MHz): <input v-model="downlink" v-on:input="updateId"/><br/>
-      Base Frequency (MHz): <input v-model="base" v-on:input="updateId"/><br/>
-      Spacing (KHz): <input v-model="spacing" v-on:input="updateId"/><br/>
-      Offset (MHz): <input v-model="offset" v-on:input="updateId"/><br/>
-      Channel ID (dec): <input v-model="id" v-on:input="updateDownlink"/> (0x{{ id.toString(16) }})<br/>
-      Uplink Frequency (MHz): {{ uplink }}MHz
-    </p>
+    <h2 class="main-header">IDEN Calculator</h2>
+    <br>
+    <p>Downlink Frequency (MHz): <input v-model="downlink" v-on:input="updateId"/></p>
+    <p>Base Frequency (MHz): <input v-model="base" v-on:input="updateId"/></p>
+    <p>Spacing (KHz): <input v-model="spacing" v-on:input="updateId"/></p>
+    <p>Offset (MHz): <input v-model="offset" v-on:input="updateId"/></p>
+    <p>Channel ID (dec): <input v-model="id" v-on:input="updateDownlink"/> (0x{{ id.toString(16) }})</p>
+    <p>Uplink Frequency (MHz): <b>{{ uplink }}MHz</b></p>
     <p class="footer-text">iden-calc-web V0.2 copyright &copy; 2023 Natalie Moore, Connor Lovell and the <a href="https://github.com/dvmproject">DVMProject</a> team.</p>
   </main>
 </template>

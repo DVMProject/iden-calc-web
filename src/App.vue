@@ -9,13 +9,6 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-.footer-text {
-  font-size: 8pt;
-}
-
-.main-header {
-  text-align: center;
-}
 
 header {
   line-height: 1.5;
