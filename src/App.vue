@@ -12,7 +12,7 @@ import { RouterLink, RouterView } from 'vue-router'
 .footer-text {
   font-size: 8pt;
 }
-
+\
 .main-header {
   text-align: center;
 }

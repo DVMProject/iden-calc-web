@@ -12,7 +12,7 @@
       Channel ID (dec): <input v-model="id" v-on:input="updateDownlink"/> (0x{{ id.toString(16) }})<br/>
       Uplink Frequency (MHz): {{ uplink }}MHz
     </p>
-    <p class="footer-text">iden-calc-web V0.1 copyright &copy; 2023 Natalie Moore and the <a href="https://github.com/dvmproject">DVMProject</a> team.</p>
+    <p class="footer-text">iden-calc-web V0.2 copyright &copy; 2023 Natalie Moore, Connor Lovell and the <a href="https://github.com/dvmproject">DVMProject</a> team.</p>
   </main>
 </template>
 

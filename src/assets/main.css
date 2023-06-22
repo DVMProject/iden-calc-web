@@ -6,6 +6,8 @@
   padding: 2rem;
 
   font-weight: normal;
+  background-color: #2b2d31;
+  border-radius: 20px;
 }
 
 a,
@@ -29,3 +31,5 @@ a,
 
 
 }
+
+
