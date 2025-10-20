@@ -9,9 +9,10 @@
     <p>Base Frequency (MHz): <input v-model="base" v-on:input="updateId"/></p>
     <p>Spacing (KHz): <input v-model="spacing" v-on:input="updateId"/></p>
     <p>Offset (MHz): <input v-model="offset" v-on:input="updateId"/></p>
-    <p>Channel ID (dec): <input v-model="id" v-on:input="updateDownlink"/> (0x{{ id.toString(16) }})</p>
+    <div class="alert alert-danger" v-show="invalid">Woah there! Your channel number is invalid! <br> Reason: {{ validation_message }}</div>
+    <p>Channel Number (dec): <input v-model="id" v-on:input="updateDownlink"/> (0x{{ id.toString(16) }})</p>
     <p>Uplink Frequency (MHz): <b>{{ uplink }}MHz</b></p>
-    <p class="footer-text">iden-calc-web V0.2 copyright &copy; 2023 Natalie Moore, Connor Lovell and the <a href="https://github.com/dvmproject">DVMProject</a> team.</p>
+    <p class="footer-text">iden-calc-web V0.2 copyright &copy; 2023, 2025 Natalie Moore, Connor Lovell and the <a href="https://github.com/dvmproject">DVMProject</a> team.</p>
   </main>
 </template>
 
@@ -27,6 +28,8 @@ export default defineComponent({
             base: 450 as number,
             spacing: 6.25 as number,
             offset: 5 as number,
+            invalid: 0 as number,
+            validation_message: "" as string,
         }
     },
     methods: {
@@ -34,7 +37,25 @@ export default defineComponent({
           var downlinkHz = this.downlink * 1000000
           var baseHz = this.base * 1000000
           var spacingHz = this.spacing * 1000
-          this.id = (downlinkHz - baseHz) / spacingHz
+          var new_id = (downlinkHz - baseHz) / spacingHz
+
+          if (new_id % 1 > 0) {
+            this.invalid = 1;
+            this.id = 0;
+            this.validation_message = "Fractional channel number: must be a whole number"
+          } else if (new_id > 4095) {
+            this.invalid = 1;
+            this.id = 0;
+            this.validation_message = "Too Large: channel number must be less than 4095 (0xFFF)"
+          } else if (new_id < 0) {
+            this.invalid = 1;
+            this.id = 0;
+            this.validation_message = "Too Small: channel number must be greater than zero"
+          } else {
+            this.invalid = 0;
+            this.id = new_id;
+          }
+
           this.uplink = (this.downlink * 1 + this.offset * 1)
         },
         async updateDownlink() {
